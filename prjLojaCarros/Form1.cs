@@ -33,5 +33,11 @@ namespace prjLojaCarros
             frmTipo tipo = new frmTipo();
             tipo.Show();
         }
+
+        private void btnCadVeiculo_Click(object sender, EventArgs e)
+        {
+            frmVeiculo veiculo = new frmVeiculo();
+            veiculo.Show();
+        }
     }
 }

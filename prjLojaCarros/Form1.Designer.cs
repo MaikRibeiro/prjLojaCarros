@@ -31,11 +31,12 @@ namespace prjLojaCarros
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.marcaVeículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCadMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnTipo = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCadTipo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSair = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCadVeiculo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,62 +47,72 @@ namespace prjLojaCarros
             this.cadastrosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(533, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // cadastrosToolStripMenuItem
             // 
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.marcaVeículoToolStripMenuItem,
+            this.btnCadMarca,
             this.toolStripMenuItem1,
-            this.btnTipo,
+            this.btnCadTipo,
             this.toolStripMenuItem2,
+            this.btnCadVeiculo,
             this.btnSair});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
-            // marcaVeículoToolStripMenuItem
+            // btnCadMarca
             // 
-            this.marcaVeículoToolStripMenuItem.Name = "marcaVeículoToolStripMenuItem";
-            this.marcaVeículoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.marcaVeículoToolStripMenuItem.Text = "Marca - Veículo";
-            this.marcaVeículoToolStripMenuItem.Click += new System.EventHandler(this.marcaVeículoToolStripMenuItem_Click);
+            this.btnCadMarca.Name = "btnCadMarca";
+            this.btnCadMarca.Size = new System.Drawing.Size(180, 22);
+            this.btnCadMarca.Text = "Marca - Veículo";
+            this.btnCadMarca.Click += new System.EventHandler(this.marcaVeículoToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
-            // btnTipo
+            // btnCadTipo
             // 
-            this.btnTipo.Name = "btnTipo";
-            this.btnTipo.Size = new System.Drawing.Size(224, 26);
-            this.btnTipo.Text = "Tipo - Veículo";
-            this.btnTipo.Click += new System.EventHandler(this.btnTipo_Click);
+            this.btnCadTipo.Name = "btnCadTipo";
+            this.btnCadTipo.Size = new System.Drawing.Size(180, 22);
+            this.btnCadTipo.Text = "Tipo - Veículo";
+            this.btnCadTipo.Click += new System.EventHandler(this.btnTipo_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(221, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // btnSair
             // 
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(224, 26);
+            this.btnSair.Size = new System.Drawing.Size(180, 22);
             this.btnSair.Text = "Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // btnCadVeiculo
+            // 
+            this.btnCadVeiculo.Name = "btnCadVeiculo";
+            this.btnCadVeiculo.Size = new System.Drawing.Size(180, 22);
+            this.btnCadVeiculo.Text = "Veiculos";
+            this.btnCadVeiculo.Click += new System.EventHandler(this.btnCadVeiculo_Click);
+            // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPrincipal";
             this.Text = "MaikMarinhos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -116,11 +127,12 @@ namespace prjLojaCarros
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem marcaVeículoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnCadMarca;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem btnTipo;
+        private System.Windows.Forms.ToolStripMenuItem btnCadTipo;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem btnSair;
+        private System.Windows.Forms.ToolStripMenuItem btnCadVeiculo;
     }
 }
 
