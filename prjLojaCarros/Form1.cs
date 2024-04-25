@@ -39,5 +39,9 @@ namespace prjLojaCarros
             frmVeiculo veiculo = new frmVeiculo();
             veiculo.Show();
         }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

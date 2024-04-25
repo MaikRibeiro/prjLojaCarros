@@ -24,12 +24,10 @@ namespace prjLojaCarros
         DataTable dtVeiculo = new DataTable();
         DataTable dtMarca = new DataTable();
         DataTable dtTipo = new DataTable();
-        String connectionString = @"Server=Web-API-PW3.mssql.somee.com;Database=Web-API-PW3;User Id=GabrielGassner_SQLLogin_1;Password=312q5qzab9;";
+        String connectionString = @"Server=prometheus.mssql.somee.com ;Database=prometheus;User Id=Maik_Ribeiro_SQLLogin_1;Password=4fqncedyef;";
 
         private void frmVeiculo_Load(object sender, EventArgs e)
         {
-            carregaComboTipo();
-            carregaComboMarca();
             btnSalvar.Enabled = false;
             txtCodVeiculo.Enabled = false;
             txtVeiculo.Enabled = false;
@@ -66,8 +64,6 @@ namespace prjLojaCarros
         }
         private void navegar()
         {
-            carregaComboTipo();
-            carregaComboMarca();
             txtCodVeiculo.Text = dtVeiculo.Rows[registroAtual][0].ToString();
             txtAnoVeiculo.Text = dtVeiculo.Rows[registroAtual][1].ToString();
             txtVeiculo.Text = dtVeiculo.Rows[registroAtual][2].ToString();
@@ -239,10 +235,13 @@ namespace prjLojaCarros
             cbbTipo.SelectedIndex = -1;
             cbbMarca.Enabled = true;
             cbbMarca.SelectedIndex = -1;
+
             btnNovo.Enabled = false;
             btnSalvar.Enabled = true;
             btnExcluir.Enabled = false;
             btnEditar.Enabled = false;
+            btnCancelar.Visible = true;
+
             btnPrimeiro.Enabled = false;
             btnAnterior.Enabled = false;
             btnProximo.Enabled = false;
@@ -254,109 +253,123 @@ namespace prjLojaCarros
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            carregaTudoTipo();
+            carregaTudoMarca();
+
             novo = false;
             txtVeiculo.Enabled = true;
             txtAnoVeiculo.Enabled = true;
             cbbTipo.Enabled = true;
             cbbMarca.Enabled = true;
+
+            btnEditar.Enabled = false;
             btnSalvar.Enabled = true;
             btnNovo.Enabled = false;
             btnExcluir.Enabled = false;
+            btnCancelar.Visible = true;
+
             btnAnterior.Enabled = false;
             btnPrimeiro.Enabled = false;
             btnProximo.Enabled = false;
             btnUltimo.Enabled = false;
-            carregaTudoTipo();
-            carregaTudoMarca();
+        }
+
+        private void SalvarNovoVeiculo()
+        {
+            string sql = "INSERT INTO cad_veiculo (cvei_modelo, cvei_ano, cvei_cmar_id, cvei_ctip_id) " +
+                         "VALUES (@Modelo, @Ano, @MarcaID, @TipoID)";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@Modelo", txtVeiculo.Text);
+                    cmd.Parameters.AddWithValue("@Ano", txtAnoVeiculo.Text);
+                    cmd.Parameters.AddWithValue("@MarcaID", cbbMarca.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@TipoID", cbbTipo.SelectedValue.ToString());
+                    con.Open();
+                    try
+                    {
+                        int i = cmd.ExecuteNonQuery();
+                        if (i > 0)
+                        {
+                            MessageBox.Show("Veículo cadastrado com sucesso!");
+                            frmVeiculo_Load(this, EventArgs.Empty);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.ToString());
+                    }
+                }
+            }
+        }
+
+        private void AtualizarVeiculo()
+        {
+            string sql = "UPDATE cad_veiculo SET cvei_modelo = @Modelo, cvei_ano = @Ano, " +
+                         "cvei_cmar_id = @MarcaID, cvei_ctip_id = @TipoID WHERE cvei_id = @VeiculoID";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@Modelo", txtVeiculo.Text);
+                    cmd.Parameters.AddWithValue("@Ano", txtAnoVeiculo.Text);
+                    cmd.Parameters.AddWithValue("@MarcaID", cbbMarca.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@TipoID", cbbTipo.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@VeiculoID", txtCodVeiculo.Text);
+                    con.Open();
+                    try
+                    {
+                        int i = cmd.ExecuteNonQuery();
+                        if (i > 0)
+                        {
+                            MessageBox.Show("Veículo alterado com sucesso!");
+                            frmVeiculo_Load(this, EventArgs.Empty);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.ToString());
+                    }
+                }
+            }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (novo)
             {
-                string sql = "INSERT INTO cad_veiculo (cvei_modelo, cvei_ano, cvei_cmar_id, cvei_ctip_id) VALUES('" + txtVeiculo.Text + "'," + txtAnoVeiculo.Text + ", " + cbbMarca.SelectedValue.ToString() + ", '" 
-                   + cbbTipo.SelectedValue.ToString() + "')";
-                SqlConnection con = new SqlConnection(connectionString);
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.CommandType = CommandType.Text;
-                con.Open();
-                try
-                {
-                    int i = cmd.ExecuteNonQuery();
-                    if (i > 0)
-                    {
-                        MessageBox.Show("Veiculo cadastrado com sucesso!");
-                        this.frmVeiculo_Load(this, e);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro: " + ex.ToString());
-                }
-                finally
-                {
-                    con.Close();
-                }
-                txtVeiculo.Enabled = false;
-                txtAnoVeiculo.Enabled = false;
-                cbbTipo.Enabled = false;
-                cbbMarca.Enabled = false;
-                btnSalvar.Enabled = false;
-                btnNovo.Enabled = true;
-                btnEditar.Enabled = true;
-                btnExcluir.Enabled = true;
-                btnPrimeiro.Enabled = true;
-                btnAnterior.Enabled = true;
-                btnProximo.Enabled = true;
-                btnUltimo.Enabled = true;
-                dtVeiculo = new DataTable();
-                frmVeiculo_Load(this, e);
+                SalvarNovoVeiculo();
             }
             else
             {
-                string sql = "UPDATE cad_veiculo SET cvei_modelo='" +
-                    txtVeiculo.Text + "', cvei_ano=" + txtAnoVeiculo.Text +
-                    ", cvei_cmar_id=" + cbbMarca.SelectedValue.ToString() +
-                    ", cvei_ctip_id='" + cbbTipo.SelectedValue.ToString() +
-                    "' WHERE cvei_id=" +
-                    txtCodVeiculo.Text;
-
-                SqlConnection con = new SqlConnection(connectionString);
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.CommandType = CommandType.Text;
-                con.Open();
-                try
-                {
-                    int i = cmd.ExecuteNonQuery();
-                    if (i > 0)
-                    {
-                        MessageBox.Show("Veiculo alterado com sucesso!");
-                        this.frmVeiculo_Load(this, e);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro: " + ex.ToString());
-                }
-                finally
-                {
-                    con.Close();
-                }
-                txtVeiculo.Enabled = false;
-                txtAnoVeiculo.Enabled = false;
-                cbbTipo.Enabled = false;
-                cbbMarca.Enabled = false;
-                btnSalvar.Enabled = false;
-                btnNovo.Enabled = true;
-                btnEditar.Enabled = true;
-                btnExcluir.Enabled = true;
-                btnPrimeiro.Enabled = true;
-                btnAnterior.Enabled = true;
-                btnProximo.Enabled = true;
-                btnUltimo.Enabled = true;
-                dtVeiculo = new DataTable();
-                frmVeiculo_Load(this, e);
+                AtualizarVeiculo();
             }
+            carregaTudoTipo();
+            carregaTudoMarca();
+
+            dtVeiculo = new DataTable();
+            frmVeiculo_Load(this, e);
+
+            txtVeiculo.Enabled = false;
+            txtAnoVeiculo.Enabled = false;
+            cbbTipo.Enabled = false;
+            cbbMarca.Enabled = false;
+
+            btnCancelar.Visible = false;
+            btnSalvar.Enabled = false;
+            btnNovo.Enabled = true;
+            btnEditar.Enabled = true;
+            btnExcluir.Enabled = true;
+
+            btnPrimeiro.Enabled = true;
+            btnAnterior.Enabled = true;
+            btnProximo.Enabled = true;
+            btnUltimo.Enabled = true;
+
+            
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -385,9 +398,13 @@ namespace prjLojaCarros
                 {
                     con.Close();
                 }
+                carregaTudoTipo();
+                carregaTudoMarca();
+
                 cbbTipo.DataSource = dtTipo;
                 cbbTipo.DisplayMember = "ctip_descricao";
                 cbbTipo.ValueMember = "ctip_id";
+
                 cbbMarca.DataSource = dtMarca;
                 cbbMarca.DisplayMember = "cmar_descricao";
                 cbbMarca.ValueMember = "cmar_id";
@@ -410,39 +427,25 @@ namespace prjLojaCarros
             }
         }
 
-        private void carregar()
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            btnSalvar.Enabled = false;
-            txtCodVeiculo.Enabled = false;
+            frmVeiculo_Load(this, e);
             txtVeiculo.Enabled = false;
             txtAnoVeiculo.Enabled = false;
             cbbTipo.Enabled = false;
             cbbMarca.Enabled = false;
-            string sql = "SELECT * FROM cad_veiculo";
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.CommandType = CommandType.Text;
-            SqlDataReader reader;
-            con.Open();
-            try
-            {
-                using (reader = cmd.ExecuteReader())
-                {
-                    dtVeiculo.Load(reader);
-                    totalRegistros = dtVeiculo.Rows.Count;
-                    registroAtual = 0;
-                    navegar();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro: " + ex.ToString());
-            }
-            finally
-            {
-                con.Close();
-            }
-            dtVeiculo = new DataTable();
+
+            btnSalvar.Enabled = false;
+            btnNovo.Enabled = true;
+            btnEditar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnCancelar.Visible = false;
+
+            btnPrimeiro.Enabled = true;
+            btnAnterior.Enabled = true;
+            btnProximo.Enabled = true;
+            btnUltimo.Enabled = true;
         }
+
     }
 }
