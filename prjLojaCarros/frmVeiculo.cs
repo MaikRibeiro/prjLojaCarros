@@ -28,13 +28,18 @@ namespace prjLojaCarros
 
         private void frmVeiculo_Load(object sender, EventArgs e)
         {
+            carregaComboTipo();
+            carregaComboMarca();
             btnSalvar.Enabled = false;
             txtCodVeiculo.Enabled = false;
             txtVeiculo.Enabled = false;
             txtAnoVeiculo.Enabled = false;
             cbbTipo.Enabled = false;
             cbbMarca.Enabled = false;
-            string sql = "SELECT * FROM cad_veiculo";
+            string sql = "SELECT cvei_id, cvei_ano, cvei_modelo, ctip_descricao, cmar_descricao " +
+                         "FROM cad_veiculo " +
+                         "INNER JOIN cad_tipo ON ctip_id = cvei_ctip_id " +
+                         "INNER JOIN cad_marca ON cmar_id = cvei_cmar_id ";
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
@@ -102,7 +107,7 @@ namespace prjLojaCarros
         private void carregaComboMarca()
         {
             dtMarca = new DataTable();
-            string sql = "SELECT * from cad_marca WHERE cmar_id=" + dtVeiculo.Rows[registroAtual][4].ToString();
+            string sql = "SELECT * from cad_marca";
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
@@ -159,7 +164,7 @@ namespace prjLojaCarros
         private void carregaComboTipo()
         {
             dtTipo = new DataTable();
-            string sql = "SELECT * from cad_tipo WHERE ctip_id=" + dtVeiculo.Rows[registroAtual][3].ToString();
+            string sql = "SELECT * from cad_tipo";
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
