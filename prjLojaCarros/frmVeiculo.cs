@@ -25,7 +25,6 @@ namespace prjLojaCarros
         DataTable dtMarca = new DataTable();
         DataTable dtTipo = new DataTable();
         String connectionString = @"Server=prometheus.mssql.somee.com ;Database=prometheus;User Id=Maik_Ribeiro_SQLLogin_1;Password=4fqncedyef;";
-
         private void frmVeiculo_Load(object sender, EventArgs e)
         {
             btnSalvar.Enabled = false;
