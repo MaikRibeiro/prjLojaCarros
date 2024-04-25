@@ -50,7 +50,7 @@ namespace prjLojaCarros
             // btnNovo
             // 
             this.btnNovo.Location = new System.Drawing.Point(13, 9);
-            this.btnNovo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNovo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(85, 28);
             this.btnNovo.TabIndex = 0;
@@ -61,7 +61,7 @@ namespace prjLojaCarros
             // btnEditar
             // 
             this.btnEditar.Location = new System.Drawing.Point(102, 9);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(85, 28);
             this.btnEditar.TabIndex = 1;
@@ -72,7 +72,7 @@ namespace prjLojaCarros
             // btnExcluir
             // 
             this.btnExcluir.Location = new System.Drawing.Point(191, 9);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(2);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(85, 28);
             this.btnExcluir.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace prjLojaCarros
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(281, 9);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(85, 28);
             this.btnSalvar.TabIndex = 3;
@@ -100,9 +100,9 @@ namespace prjLojaCarros
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(8, 49);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(529, 102);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
@@ -111,7 +111,7 @@ namespace prjLojaCarros
             // txtMarca
             // 
             this.txtMarca.Location = new System.Drawing.Point(94, 56);
-            this.txtMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMarca.Margin = new System.Windows.Forms.Padding(2);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(223, 20);
             this.txtMarca.TabIndex = 6;
@@ -119,7 +119,7 @@ namespace prjLojaCarros
             // txtCodMarca
             // 
             this.txtCodMarca.Location = new System.Drawing.Point(94, 22);
-            this.txtCodMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodMarca.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodMarca.Name = "txtCodMarca";
             this.txtCodMarca.Size = new System.Drawing.Size(63, 20);
             this.txtCodMarca.TabIndex = 4;
@@ -149,7 +149,7 @@ namespace prjLojaCarros
             // btnUltimo
             // 
             this.btnUltimo.Location = new System.Drawing.Point(343, 161);
-            this.btnUltimo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUltimo.Margin = new System.Windows.Forms.Padding(2);
             this.btnUltimo.Name = "btnUltimo";
             this.btnUltimo.Size = new System.Drawing.Size(50, 21);
             this.btnUltimo.TabIndex = 15;
@@ -160,7 +160,7 @@ namespace prjLojaCarros
             // btnProximo
             // 
             this.btnProximo.Location = new System.Drawing.Point(279, 161);
-            this.btnProximo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnProximo.Margin = new System.Windows.Forms.Padding(2);
             this.btnProximo.Name = "btnProximo";
             this.btnProximo.Size = new System.Drawing.Size(50, 21);
             this.btnProximo.TabIndex = 14;
@@ -171,7 +171,7 @@ namespace prjLojaCarros
             // btnAnterior
             // 
             this.btnAnterior.Location = new System.Drawing.Point(215, 161);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(50, 21);
             this.btnAnterior.TabIndex = 13;
@@ -182,7 +182,7 @@ namespace prjLojaCarros
             // btnPrimeiro
             // 
             this.btnPrimeiro.Location = new System.Drawing.Point(149, 161);
-            this.btnPrimeiro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrimeiro.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrimeiro.Name = "btnPrimeiro";
             this.btnPrimeiro.Size = new System.Drawing.Size(50, 21);
             this.btnPrimeiro.TabIndex = 12;
@@ -193,7 +193,7 @@ namespace prjLojaCarros
             // btnAtualizar
             // 
             this.btnAtualizar.Location = new System.Drawing.Point(281, 9);
-            this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(85, 28);
             this.btnAtualizar.TabIndex = 16;
@@ -205,7 +205,7 @@ namespace prjLojaCarros
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(370, 8);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 28);
             this.btnCancelar.TabIndex = 17;
@@ -231,10 +231,11 @@ namespace prjLojaCarros
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNovo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "frmMarca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMarca";
+            this.Text = "Marcas dos Veiculos";
             this.Load += new System.EventHandler(this.frmMarca_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
