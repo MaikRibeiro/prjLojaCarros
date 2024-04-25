@@ -16,7 +16,12 @@ namespace prjLojaCarros
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPrincipal());
+            frmLogin login = new frmLogin();
+            Application.Run(login);
+            if (login.LoginSuccessful)
+            {
+                Application.Run(new frmPrincipal());
+            }
         }
     }
 }
