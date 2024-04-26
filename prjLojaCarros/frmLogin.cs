@@ -19,12 +19,12 @@ namespace prjLojaCarros
             Application.Exit();
         }
 
-        private void txtUser_TextChanged(object sender, EventArgs e)
+        private void btnEntrar_Click(object sender, EventArgs e)
         {
-
+            efetuarLogin();
         }
 
-        private void btnEntrar_Click(object sender, EventArgs e)
+        private void efetuarLogin()
         {
             string usuario = txtUser.Text;
             string senha = txtPass.Text;
@@ -51,18 +51,21 @@ namespace prjLojaCarros
                     else
                     {
                         MessageBox.Show("Usuário ou senha incorretos.");
+                        txtUser.Clear();
+                        txtPass.Clear();
+                        txtUser.Focus();
                     }
                 }
             }
         }
 
-        private void txtPass_TextChanged(object sender, EventArgs e)
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
         {
-
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                efetuarLogin();
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

@@ -264,7 +264,7 @@ namespace prjLojaCarros
                     int i = cmd.ExecuteNonQuery();
                     if (i > 0)
                     {
-                        MessageBox.Show("Tipo deletada com sucesso");
+                        MessageBox.Show("Tipo deletado com sucesso");
                     }
 
                 }
